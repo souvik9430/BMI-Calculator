@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+        <title>Convert Your BMI with Height</title>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Height Converter</title>
+        </head>
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="bmilogo.jpeg" type="image/x-icon">
+        <body>
+        <script >
+          
+            function ComputeBMI() {
+                
+                var height = Number(document.getElementById("height").value);
+                var heightunits = document.getElementById("heightunits").value;
+                var weight = Number(document.getElementById("weight").value);
+                var weightunits = document.getElementById("weightunits").value;
+
+
+                if (heightunits == "Inches") height /= 39.3700787;
+                if (heightunits == "Centimeter") height /= 100;
+                if (heightunits == "Feet") height /= 3.28084;
+
+
+                if (weightunits == "lb") weight /= 2.20462;
+                if (weightunits == "Grams") weight /= 1000;
+                
+
+                var BMI = (weight / Math.pow(height, 2) );
+                document.getElementById("output").innerText = Math.round(BMI * 100000000) / 100000000 ;
+        
+
+                var output = (BMI * 100000000) / 100000000
+                if (output < 18.5)
+                    document.getElementById("comment").innerText = "Oops! You are Underweight.";
+                else if (output >= 18.5 && output <= 25)
+                    document.getElementById("comment").innerText = "Awesome! You are Healthy.\n You Are Perfectly Fine";
+                else if (output >= 25 && output <= 30)
+                    document.getElementById("comment").innerText = "Eee! You are Overweight.";
+                else if (output > 30)
+                    document.getElementById("comment").innerText = "Seesh! You are Obese.";
+            }
+            function convert() {
+                var feet = parseInt(document.getElementById("feet").value);
+                var inches = parseInt(document.getElementById("inches").value);
+                var totalInches = (feet * 12) + inches;
+                var centimeters = totalInches * 2.54;
+                var meters = totalInches * 0.0254;
+                var result = "Height in centimeters: " + centimeters + " cm";
+                document.getElementById("result").innerHTML = result;
+            }
+            </script>
+        <h1 align="center">YOᑌ ᗩᖇE ᗯEᒪᑕOᗰE</h1>
+        </head>
+        </body>
+        <h1 align="center">𝔹𝕠𝕕𝕪 𝕄𝕒𝕤𝕤 𝕀𝕟𝕕𝕖𝕩 ℂ𝕒𝕝𝕔𝕦𝕝𝕒𝕥𝕠𝕣</h1>
+        <h1 align="left">BMI Calculator</h1>
+        <b><h2 align="left">Enter your height: <input type="text" id="height"/>
+            <select type="multiple" id="heightunits">
+                <option value="Metres" selected="selected">Metres</option>
+                <option value="Inches">Inches</option>
+                <option value="Centimeter">Centimeter</option>
+                <option value="Feet">Feet</option>
+            </select>
+        </p>
+        <b>Enter your weight: <input type="text" id="weight"/>
+            <select type="multiple" id="weightunits">
+                <option value="Kg" selected="selected">Kilograms</option>
+                <option value="lb">Pounds</option>
+                <option value="Grams">Grams</option>
+            </select>
+        </p>
+        <a href="#" class="button" onclick="ComputeBMI()">Compute BMI</a>
+        <h3 align="left">Your BMI is: <span id="output">?</span> kg/m<sup>2</sup></h3>
+        <h3 align="left"><span id="comment"> </span> </h3>
+        <h2 align="right">Height Converter</h2>
+        <h3 align="right"><form>
+            <label for="feet">Feet:</label>
+            <input type="number" id="feet" name="feet" min="0" required>
+            <p></p>
+            <label for="inches">Inches:</label>
+            <input type="number" id="inches" name="inches" min="0" max="11" required>
+            <p></p>
+            <a href="#" class="btn" onclick="convert()">Convert into Centimeter</a>
+        </form>
+        <p id="result"></p>
+
+<head>
